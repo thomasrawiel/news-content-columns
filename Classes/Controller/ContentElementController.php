@@ -2,7 +2,7 @@
 
 namespace TRAW\NewsContentColumns\Controller;
 
-use GeorgRinger\News\Domain\Repository\NewsRepository;
+use TRAW\NewsContentColumns\Domain\Repository\NewsRepository;
 use Psr\Http\Message\ResponseInterface;
 use TRAW\NewsContentColumns\Utility\AttributeUtility;
 use TRAW\NewsContentColumns\Utility\FilterUtility;
