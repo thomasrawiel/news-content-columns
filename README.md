@@ -35,8 +35,6 @@ The content elements will be rendered in the corresponding column
 ![Result](Documentation/result.png)
 
 
-
-
 ## Credits:
 
 Extension icon shamelessly copied from https://typo3.github.io/TYPO3.Icons/icons/overlay/overlay-news.html
