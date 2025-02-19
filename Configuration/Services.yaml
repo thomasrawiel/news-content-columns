@@ -6,3 +6,8 @@ services:
 
   TRAW\NewsContentColumns\:
     resource: '../Classes/*'
+    
+  TRAW\NewsContentColumns\EventListener\News\NewsDetailActionEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'txnewscontentcolumns-detailaction'
