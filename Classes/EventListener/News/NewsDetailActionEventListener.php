@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace TRAW\NewsContentColumns\EventListener\News;
 
 use GeorgRinger\News\Event\NewsDetailActionEvent;
+use TRAW\NewsContentColumns\Utility\AttributeUtility;
+use TRAW\NewsContentColumns\Utility\FilterUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -28,12 +30,12 @@ class NewsDetailActionEventListener
             && $request->getArgument('controller') === 'News'
             && $request->getArgument('action') === 'detail') {
 
-            $newsPluginColPos = $this->getColPosOfNewsPlugin($request->getAttribute('currentContentObject'));
+            $newsPluginColPos = AttributeUtility::getCurrentColPos($request);
 
             $contentElements = $newsItem->getContentElements();
 
             if ($contentElements->count() > 0 && !is_null($newsPluginColPos)) {
-                $filteredContentElements = $this->filterContentElementsByColPos($contentElements, $newsPluginColPos);
+                $filteredContentElements = FilterUtility::filterContentElementsByColPos($contentElements, $newsPluginColPos);
 
                 if ($filteredContentElements->count() < $contentElements->count()) {
                     $newsItem->_setProperty('contentElements', $filteredContentElements);
@@ -45,37 +47,5 @@ class NewsDetailActionEventListener
         }
     }
 
-    /**
-     * Get all attached content elements that have this colPos
-     *
-     * @param ObjectStorage $contentElements
-     * @param int           $colPos
-     *
-     * @return ObjectStorage
-     */
-    protected function filterContentElementsByColPos(ObjectStorage $contentElements, int $colPos): ObjectStorage
-    {
-        $filteredContentElements = array_filter($contentElements->getArray(), function ($element) use ($colPos) {
-            return $element->getColPos() === $colPos;
-        });
-
-        $objects = GeneralUtility::makeInstance(ObjectStorage::class);
-        array_walk($filteredContentElements, function (&$item) use ($objects) {
-            $objects->attach($item);
-        });
-
-        return $objects;
-    }
-
-    /**
-     * Get the colPos of the news detail plugin
-     *
-     * @param ContentObjectRenderer $currentContentObject
-     *
-     * @return int|null
-     */
-    protected function getColPosOfNewsPlugin(ContentObjectRenderer $currentContentObject): ?int
-    {
-        return $currentContentObject->data['colPos'] ?? null;
-    }
+    
 }
