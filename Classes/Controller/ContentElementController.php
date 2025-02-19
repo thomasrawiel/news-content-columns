@@ -2,8 +2,8 @@
 
 namespace TRAW\NewsContentColumns\Controller;
 
-use TRAW\NewsContentColumns\Domain\Repository\NewsRepository;
 use Psr\Http\Message\ResponseInterface;
+use TRAW\NewsContentColumns\Domain\Repository\NewsRepository;
 use TRAW\NewsContentColumns\Utility\AttributeUtility;
 use TRAW\NewsContentColumns\Utility\FilterUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -47,12 +47,12 @@ class ContentElementController extends ActionController
 
             $filteredContentElements = FilterUtility::filterContentElementsByColPos($newsRecord->getContentElements(), $currentColPos);
 
-            if($filteredContentElements->count() > 0) {
-                $newsRecord->_setProperty('contentElements', $filteredContentElements);
+            if ($filteredContentElements->count() > 0) {
+                $idList = AttributeUtility::generateIdList($filteredContentElements);
                 $this->view->assignMultiple([
                     'newsId' => $newsRecord->getUid(),
                     'currentColPos' => $currentColPos,
-                    'contentElementIdList' => $newsRecord->getContentElementIdList()
+                    'contentElementIdList' => $idList,
                 ]);
                 unset($newsRecord);
             }
