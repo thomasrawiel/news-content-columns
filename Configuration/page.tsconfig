@@ -1,0 +1,14 @@
+mod.wizards.newContentElement.wizardItems.ext-news {
+    elements {
+        news-content-columns {
+            title = News Content Elements
+            description = Render news content elements in a specific column
+            iconIdentifier = overlay-news
+            tt_content_defValues {
+                CType = newscontentcolumns_newscontentelements
+            }
+        }
+    }
+
+    show := addToList(news-content-columns)
+}
