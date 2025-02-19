@@ -1,0 +1,27 @@
+{
+  "name": "traw/news-content-columns",
+  "type": "typo3-cms-extension",
+  "description": "Render the additional content elements of news in your desired column",
+  "authors": [
+    {
+      "name": "Thomas Rawiel",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "typo3/cms-core": "^12 || ^13",
+    "georgringer/news": "^11 || ^12"
+  },
+  "license": "GPL-3.0-or-later",
+  "autoload": {
+    "psr-4": {
+      "TRAW\\NewsContentColumns\\": "Classes/"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "news_content_columns"
+    }
+  }
+}
