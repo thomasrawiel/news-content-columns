@@ -26,9 +26,7 @@ class NewsDetailActionEventListener
         $assignedValues = $event->getAssignedValues();
         $newsItem = $assignedValues['newsItem'] ?? null;
 
-        if (!empty($newsItem)
-            && $request->getArgument('controller') === 'News'
-            && $request->getArgument('action') === 'detail') {
+        if (!empty($newsItem)) {
 
             $newsPluginColPos = AttributeUtility::getCurrentColPos($request);
 
