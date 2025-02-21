@@ -36,7 +36,7 @@ class ContentElementController extends ActionController
         $requestArguments = $this->request->getAttribute('routing')->getArguments();
         $controller = $requestArguments['tx_news_pi1']['controller'] ?? null;
         $action = $requestArguments['tx_news_pi1']['action'] ?? null;
-        $newsId = (int)$requestArguments['tx_news_pi1']['news'];
+        $newsId = (int)($requestArguments['tx_news_pi1']['news'] ?? 0);
 
         if ($controller === 'News'
             && $action === 'detail'
