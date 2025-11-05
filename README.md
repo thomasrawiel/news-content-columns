@@ -1,20 +1,21 @@
 # news-content-columns
-Render the additional content elements of news in your desired column
+Render the additional content elements of news in your desired column.
 
 ## Installation
-`composer require traw/news-content-columns`
+`composer require traw/news-content-columns` or download from [TER](https://extensions.typo3.org/extension/news_content_columns)
 
 ## Configuration
 
-No additional config.
+No additional config needed. The news storage folder must have the same Backend Layout as the News Detail page or at least have the same colPos columns available. 
 
 ## Usage
 
-If installed, the extension automatically filters the content element that are attached to a news record. 
-All records are removed, that don't have the same colPos as the News-Detail-Plugin.
+In the news record choose the appropriate colPos for each content element that should be rendered in another column.
 
+The extension automatically filters the content elements that are attached to a news record.
+All content elements are removed, that don't have the same colPos as the News-Detail-Plugin or the plugin that renders the detail action resp.
 
-On the page where the News-Detail-Plugin is located, place the `News Content Columns` plugin in another column to render the content elements of the news record that have this colPos.
+On the page where the News-Detail-Plugin is located or the news detail view is rendered, place the `News Content Columns` plugin in any another column to render the content elements of the current news record that have the same colPos.
 
 ## Example
 
