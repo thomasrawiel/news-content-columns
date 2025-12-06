@@ -6,6 +6,7 @@ namespace TRAW\NewsContentColumns\EventListener\News;
 use GeorgRinger\News\Event\NewsDetailActionEvent;
 use TRAW\NewsContentColumns\Utility\AttributeUtility;
 use TRAW\NewsContentColumns\Utility\FilterUtility;
+use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -13,6 +14,9 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 /**
  * Class NewsDetailActionEventListener
  */
+#[AsEventListener(
+    identifier: 'traw/news-content-columns-detail-action',
+)]
 class NewsDetailActionEventListener
 {
     /**
@@ -45,5 +49,5 @@ class NewsDetailActionEventListener
         }
     }
 
-    
+
 }

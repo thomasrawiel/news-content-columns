@@ -8,9 +8,11 @@ Render the additional content elements of news in your desired column
 
 No additional config.
 
+Just make sure EXT:news Typoscript is loaded either via your template or Site Sets.
+
 ## Usage
 
-If installed, the extension automatically filters the content element that are attached to a news record. 
+If installed, the extension automatically filters the content element that are attached to a news record.
 All records are removed, that don't have the same colPos as the News-Detail-Plugin.
 
 
