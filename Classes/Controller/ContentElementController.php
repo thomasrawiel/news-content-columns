@@ -45,16 +45,18 @@ class ContentElementController extends ActionController
             $currentColPos = AttributeUtility::getCurrentColPos($this->request);
             $newsRecord = $this->newsRepository->findByUid($newsId);
 
-            $filteredContentElements = FilterUtility::filterContentElementsByColPos($newsRecord->getContentElements(), $currentColPos);
+            if ($newsRecord !== null) {
+                $filteredContentElements = FilterUtility::filterContentElementsByColPos($newsRecord->getContentElements(), $currentColPos);
 
-            if ($filteredContentElements->count() > 0) {
-                $idList = AttributeUtility::generateIdList($filteredContentElements);
-                $this->view->assignMultiple([
-                    'newsId' => $newsRecord->getUid(),
-                    'currentColPos' => $currentColPos,
-                    'contentElementIdList' => $idList,
-                ]);
-                unset($newsRecord);
+                if ($filteredContentElements->count() > 0) {
+                    $idList = AttributeUtility::generateIdList($filteredContentElements);
+                    $this->view->assignMultiple([
+                        'newsId' => $newsRecord->getUid(),
+                        'currentColPos' => $currentColPos,
+                        'contentElementIdList' => $idList,
+                    ]);
+                    unset($newsRecord);
+                }
             }
         }
 
